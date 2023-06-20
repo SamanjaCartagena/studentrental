@@ -6,7 +6,7 @@
       <!-- <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
 
       !-->
-      <h1 style="font-size:30px;">Student Rental</h1>
+      <h1 style="font-size:30px;">Student Rentals</h1>
     </a>
 
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -65,12 +65,15 @@
           </a>
         </div>
       </div>
+         <a class="navbar-item">
+        Chatroom
+      </a>
     </div>
 
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-primary">
+          <a class="button btn">
             <strong>Sign up</strong>
           </a>
           <a class="button is-light">
@@ -91,6 +94,12 @@ export default {
 </script>
 
 <style>
-
+.btn{
+  background-color: black;
+  color:white;
+}
+.navbar{
+  height:100px
+}
 </style>
   
