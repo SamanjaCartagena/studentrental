@@ -2,7 +2,7 @@
   <div>
    <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io">
+    <a class="navbar-item" href="https://bulma.io" >
       <!-- <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
 
       !-->
@@ -73,10 +73,10 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button btn">
-            <strong>Sign up</strong>
+          <a style="background-color:black; color:white" class="button btn">
+              Sign up
           </a>
-          <a class="button is-light">
+          <a style="background-color:black; color:white" class="button btn">
             Log in
           </a>
         </div>
@@ -93,13 +93,20 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .btn{
   background-color: black;
   color:white;
 }
 .navbar{
   height:100px
+}
+.button{
+  background-color: black;
+  color:white;
+}
+.navbar-brand{
+  color: red;
 }
 </style>
   
