@@ -4,7 +4,7 @@
   <div v-for="i in 12" :key="i" class="card">
   <div class="card-content">
     <p class="title">
-      “There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors.”
+      <img :src="image1"/> 
     </p>
     <p class="subtitle">
       Jeff Atwood
@@ -13,7 +13,7 @@
   <footer class="card-footer">
     <p class="card-footer-item">
       <span>
-        View on <a href="https://twitter.com/codinghorror/status/506010907021828096">Twitter</a>
+ <button @click="triggerModal(i)">View</button>
       </span>
     </p>
     <p class="card-footer-item">
@@ -28,12 +28,22 @@
 </template>
 
 <script>
+import image1 from '../assets/campus.jpg'
 export default {
-    
+    data(){
+        return{
+    image1:image1
+        }
+    },
+    methods:{
+        triggerModal(v){
+            alert(v+" has been triggered")
+        }
+    }
 }
 </script>
 
-<style scoped>
+<style >
 @import 'bulma/css/bulma.min.css';
 .card{
     width:22%;
