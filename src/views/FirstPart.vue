@@ -1,28 +1,26 @@
 <template>
-    <div class="container is-fluid has-text-centered" >
+    <div class="container is-fluid " >
         
 <form
-  @submit.prevent="addTodo" 
+  @submit.prevent="addTodo"
 >
   <div class="field is-grouped mb-5">
    <p class="control is-expanded">
-    <input 
-    
+    <input
     class="input" 
     type="text" 
-    placeholder="Enter the name of your college">
+    placeholder="Add a Todo">
    </p>
    <p class="control">
     <button
-   
     class="button is-info"
     >
-    Search 
+   Add 
     </button>
 
    </p>
   </div>
-</form>  
+</form>
         
 
     
@@ -41,7 +39,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style >
 @import 'bulma/css/bulma.min.css';
 
 .container {

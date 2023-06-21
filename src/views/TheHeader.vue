@@ -70,15 +70,19 @@
       </a>
     </div>
 
+
+
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a style="background-color:black; color:white" class="button btn">
+   
+          <button  style="background-color:black; color:white; margin:5px; padding:10px; border:0px solid white; border-radius:0.4">
               Sign up
-          </a>
-          <a style="background-color:black; color:white" class="button btn">
-            Log in
-          </a>
+          </button>
+          
+           <button @click="logging" style="background-color:black; color:white; margin:5px; padding:10px; border:0px solid white; border-radius:0.4">
+             Log in 
+          </button>
         </div>
       </div>
     </div>
@@ -89,6 +93,11 @@
 
 <script>
 export default {
+  methods:{
+    logging(){
+     this.$router.push('Login')
+    }
+  }
 
 }
 </script>

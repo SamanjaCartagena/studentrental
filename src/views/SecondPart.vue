@@ -1,5 +1,6 @@
 <template>
-<div class="container">
+<center>
+<div class="container1">
   <div v-for="i in 12" :key="i" class="card">
   <div class="card-content">
     <p class="title">
@@ -23,6 +24,7 @@
   </footer>
 </div>
 </div>
+</center>
 </template>
 
 <script>
@@ -38,5 +40,7 @@ export default {
     display: inline-block;
     margin:10px;
 }
-
+.container{
+    background-color: red;
+}
 </style>
