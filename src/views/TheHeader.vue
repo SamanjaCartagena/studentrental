@@ -65,7 +65,7 @@
           </a>
         </div>
       </div>
-         <a class="navbar-item">
+         <a @click="chat" class="navbar-item">
         Chatroom
       </a>
     </div>
@@ -99,6 +99,9 @@ export default {
     },
     signup(){
      this.$router.push('Signup')
+    },
+     chat(){
+     this.$router.push('chat')
     }
   }
 

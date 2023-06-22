@@ -6,27 +6,25 @@
 
 <form style="border:1x solid white;">
       <h1 style="font-size:30px; color:white; position:relative; top:100px;">Register</h1>
+      <div class="field">
+  <div class="control has-icons-left has-icons-right">
+    <input class="input is-danger" type="email" value="Username" >
+
+    
+  </div>
+</div>
 <div class="field">
   <div class="control has-icons-left has-icons-right">
-    <input class="input is-danger" type="email" placeholder="Email input" >
-    <span class="icon is-small is-left">
-      <i class="fas fa-envelope"></i>
-    </span>
-    <span class="icon is-small is-right">
-      <i class="fas fa-exclamation-triangle"></i>
-    </span>
+    <input class="input is-danger" type="email" value="Enter College Email" >
+
+    
   </div>
 </div>
 
 <div class="field">
   <div class="control has-icons-left has-icons-right">
     <input class="input is-danger" type="password" placeholder="Password" >
-    <span class="icon is-small is-left">
-      <i class="fas fa-envelope"></i>
-    </span>
-    <span class="icon is-small is-right">
-      <i class="fas fa-exclamation-triangle"></i>
-    </span>
+   
   </div>
 </div>
 
