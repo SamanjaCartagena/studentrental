@@ -5,7 +5,7 @@
  <div class="container is-fluid">
 
 <form style="border:1x solid white;">
-      <h1 style="font-size:30px; color:white; position:relative; top:100px;">Log In</h1>
+      <h1 style="font-size:30px; color:white; position:relative; top:100px;">Register</h1>
 <div class="field">
   <div class="control has-icons-left has-icons-right">
     <input class="input is-danger" type="email" placeholder="Email input" >

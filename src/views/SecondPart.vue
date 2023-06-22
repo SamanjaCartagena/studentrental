@@ -108,9 +108,7 @@ export default {
     display: inline-block;
     margin:10px;
 }
-.container{
-    background-color: red;
-}
+
 .vueBtn{
   background-color:transparent;
    border:0px;

@@ -76,7 +76,7 @@
       <div class="navbar-item">
         <div class="buttons">
    
-          <button  style="background-color:black; color:white; margin:5px; padding:10px; border:0px solid white; border-radius:0.4">
+          <button @click="signup"  style="background-color:black; color:white; margin:5px; padding:10px; border:0px solid white; border-radius:0.4">
               Sign up
           </button>
           
@@ -96,6 +96,9 @@ export default {
   methods:{
     logging(){
      this.$router.push('Login')
+    },
+    signup(){
+     this.$router.push('Signup')
     }
   }
 

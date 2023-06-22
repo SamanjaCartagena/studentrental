@@ -1,8 +1,10 @@
 <template>
+ <div>
   <the-header></the-header>
   <first-part></first-part>
   
   <second-part></second-part>
+ </div>
 </template>
 
 <script>
