@@ -4,11 +4,11 @@
  <center>
  <div class="container is-fluid">
 
-<form style="border:1x solid white;">
+<form style="border:1x solid white;" @submit.prevent="login">
       <h1 style="font-size:30px; color:white; position:relative; top:100px;">Log In</h1>
 <div class="field">
   <div class="control has-icons-left has-icons-right">
-    <input class="input is-danger" type="email" placeholder="Email input" >
+    <input class="input is-danger" type="email" placeholder="Email input" v-model="email">
     <span class="icon is-small is-left">
       <i class="fas fa-envelope"></i>
     </span>
@@ -20,7 +20,7 @@
 
 <div class="field">
   <div class="control has-icons-left has-icons-right">
-    <input class="input is-danger" type="password" placeholder="Password" >
+    <input class="input is-danger" type="password" placeholder="Password" v-model="password" >
     <span class="icon is-small is-left">
       <i class="fas fa-envelope"></i>
     </span>
@@ -34,7 +34,7 @@
 
 <div class="field is-grouped">
   <div class="control">
-    <button class="button ">Submit</button>
+    <button class="button " >Submit</button>
   </div>
   <div class="control">
     <button class="button">Cancel</button>
@@ -49,11 +49,34 @@
 
 <script>
 import TheHeader from '../views/TheHeader.vue'
+import {auth} from '../firebase/index'
+import {  signInWithEmailAndPassword } from "firebase/auth";
 
 export default {
 components:{
     TheHeader
+},
+data(){
+   return{
+      email:'',
+      password:''
+   }
+},
+methods:{
+   login()
+{
+   signInWithEmailAndPassword(auth, this.email, this.password)
+  .then(() => {
+    // Signed in 
+    alert('You have signed in')
+  // ...
+  })
+  .catch((error) => {
+    alert('Sign in unsuccessful')
+  });
 }
+}
+
 }
 </script>
 

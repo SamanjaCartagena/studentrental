@@ -9,13 +9,13 @@
     <input
     class="input" 
     type="text" 
-    placeholder="Add a Todo">
+    placeholder="Name of University">
    </p>
    <p class="control">
     <button
     class="button is-info"
     >
-   Add 
+  Search
     </button>
 
    </p>
@@ -43,10 +43,9 @@ export default {
 @import 'bulma/css/bulma.min.css';
 
 .container {
-    background-image: url('../assets/background.jpg');
-    height:700px;
-    background-repeat: no-repeat;
-    background-size: 100%;
+  background-color: #57068c;
+height:700px;
+  width:100%;
 
 }
 .control{
