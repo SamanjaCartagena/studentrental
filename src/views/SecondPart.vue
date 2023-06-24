@@ -13,7 +13,7 @@
   <footer class="card-footer">
     <p class="card-footer-item">
       <span>
- <button class="vueBtn" @click="triggerModal(i)">View</button>
+ <button class="vueBtn" @click="triggerModal(a.id)">View</button>
       </span>
     </p>
     <p class="card-footer-item">

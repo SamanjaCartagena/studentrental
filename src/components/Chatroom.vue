@@ -4,9 +4,9 @@
     <center>
   <div class="container is-fluid">
 
-   <marquee behavior="alternate" style="color:white; background-color:black;  font-size:30px;">Find a roommate ! </marquee>
+   <marquee behavior="alternate" style="color:white; background-color:black;  font-size:30px;">Find a roommate !</marquee>
 <textarea class="textarea" placeholder="10 lines of textarea" rows="25" ></textarea>  
-<form  @submit="hey">
+<form >
 <input class="input is-large" type="text" placeholder="Large input" >
 </form>
 </div>

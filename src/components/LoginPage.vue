@@ -1,6 +1,6 @@
 <template>
  <div>
- <the-header></the-header>
+ <the-header :user="this.userForPassing"></the-header>
  <center>
  <div class="container is-fluid">
 
@@ -34,7 +34,7 @@
 
 <div class="field is-grouped">
   <div class="control">
-    <button class="button " >Submit</button>
+    <button class="button">Submit</button>
   </div>
   <div class="control">
     <button class="button">Cancel</button>
@@ -51,6 +51,18 @@
 import TheHeader from '../views/TheHeader.vue'
 import {auth} from '../firebase/index'
 import {  signInWithEmailAndPassword } from "firebase/auth";
+import {db} from '../firebase/index'
+
+import {
+   doc,collection,
+  query,orderBy, 
+  limit, getDoc, 
+  onSnapshot, QuerySnapshot,
+  updateDoc, addDoc, 
+  deleteDoc, where
+   }
+   from 'firebase/firestore'
+     const usersCollectionRef= collection(db,'users')
 
 export default {
 components:{
@@ -60,6 +72,12 @@ data(){
    return{
       email:'',
       password:'',
+      username:'',
+      user:'',
+      id:'',
+      usernameForPassing:''
+      
+      
       
    }
 },
@@ -68,10 +86,20 @@ methods:{
 {
    signInWithEmailAndPassword(auth, this.email, this.password)
   .then(() => {
-    // Signed in 
-    alert('You have signed in')
-  // ...
+    onSnapshot(usersCollectionRef,(querySnapshot) => {
+  querySnapshot.forEach((doc) => {
+            if(this.email == doc.data().email){
+                   this.username = doc.data().username
+                   
+
+            }
+            this.usernameForPassing = this.username
+    console.log(this.username)
+    this.$router.push('/chat')
+  });
   })
+
+})
   .catch((error) => {
     alert('Sign in unsuccessful')
   });

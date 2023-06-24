@@ -1,6 +1,6 @@
 <template>
  <div>
- <the-header :user="this.username"></the-header>
+ <the-header ></the-header>
  <center>
  <div class="container is-fluid">
 
@@ -49,6 +49,7 @@
 
 <script>
 import TheHeader from '../views/TheHeader.vue'
+
 import {  createUserWithEmailAndPassword } from "firebase/auth";
 import {auth, db} from '../firebase/index'
 import {

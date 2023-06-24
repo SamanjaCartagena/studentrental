@@ -80,9 +80,8 @@
         Chatroom
       </a>
     </div>
+   <p v-if="user">Welcome {{user}}</p>
 
-
-     Welcome{{user}}
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
@@ -93,6 +92,9 @@
           
            <button @click="logging" style="background-color:#57068c; color:white; margin:5px; padding:10px; border:0px solid white; border-radius:0.4">
              Log in 
+          </button>
+           <button @click="logout" style="background-color:#57068c; color:white; margin:5px; padding:10px; border:0px solid white; border-radius:0.4">
+             Log Out 
           </button>
         </div>
       </div>
@@ -112,8 +114,9 @@ import {
   deleteDoc
    }
    from 'firebase/firestore'
-import {db} from '../firebase/index'
-const usersCollectionRef= collection(db,'users')
+   import {auth} from '../firebase/index'
+import {  signOut, } from "firebase/auth";
+
 
 export default {
   props:['user'],
@@ -130,10 +133,17 @@ export default {
     },
      chat(){
      this.$router.push('chat')
+    }, 
+    logout(){
+    signOut(auth).then(() => {
+   this.$router.push('/')
+   console.log('You have logged out')
+  }).catch((error) => {
+
+});
     }
   },
  mounted(){
-  console.log('We have received the username '+this.user)
  }
 
 }
