@@ -59,7 +59,8 @@ components:{
 data(){
    return{
       email:'',
-      password:''
+      password:'',
+      
    }
 },
 methods:{
@@ -75,7 +76,8 @@ methods:{
     alert('Sign in unsuccessful')
   });
 }
-}
+},
+
 
 }
 </script>

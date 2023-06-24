@@ -1,5 +1,6 @@
 <template>
     <div class="container is-fluid " >
+        <center><h1 style="font-size:35px; color:white; position:relative;top:100px">Student Rentals NYC</h1>
         
 <form
   @submit.prevent="addTodo"
@@ -22,13 +23,14 @@
   </div>
 </form>
         
-
+        </center>
     
 </div>
 </template>
 
 <script>
 import campus from '../assets/nyc.jpg'
+
 export default {
     data(){
         return{

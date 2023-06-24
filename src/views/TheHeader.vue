@@ -29,17 +29,28 @@
 
         <div class="navbar-dropdown">
           <a class="navbar-item">
-            About
+            College of Arts and Science
           </a>
           <a class="navbar-item">
-            Jobs
+            College of Dentistry
           </a>
           <a class="navbar-item">
-            Contact
+            Gallatin School
           </a>
-          <hr class="navbar-divider">
           <a class="navbar-item">
-            Report an issue
+            Stern School of Business
+          </a>
+           <a class="navbar-item">
+           Liberal Studies
+          </a>
+          <a class="navbar-item">
+           Rory Meyers College of Nursing
+          </a>
+          <a class="navbar-item">
+           Steinhardt School
+          </a>
+          <a class="navbar-item">
+           Silver School
           </a>
         </div>
       </div>
@@ -71,16 +82,16 @@
     </div>
 
 
-
+     Welcome{{user}}
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
    
-          <button @click="signup"  style="background-color:black; color:white; margin:5px; padding:10px; border:0px solid white; border-radius:0.4">
+          <button @click="signup"  style="background-color:#57068c; color:white; margin:5px; padding:10px; border:0px solid white; border-radius:0.4">
               Sign up
           </button>
           
-           <button @click="logging" style="background-color:black; color:white; margin:5px; padding:10px; border:0px solid white; border-radius:0.4">
+           <button @click="logging" style="background-color:#57068c; color:white; margin:5px; padding:10px; border:0px solid white; border-radius:0.4">
              Log in 
           </button>
         </div>
@@ -92,7 +103,24 @@
 </template>
 
 <script>
+import {
+  doc,collection,
+  query,orderBy, 
+  limit, getDocs, 
+  onSnapshot, QuerySnapshot, 
+  updateDoc, addDoc, 
+  deleteDoc
+   }
+   from 'firebase/firestore'
+import {db} from '../firebase/index'
+const usersCollectionRef= collection(db,'users')
+
 export default {
+  props:['user'],
+  data(){
+    return{
+    }
+  },
   methods:{
     logging(){
      this.$router.push('Login')
@@ -103,21 +131,24 @@ export default {
      chat(){
      this.$router.push('chat')
     }
-  }
+  },
+ mounted(){
+  console.log('We have received the username '+this.user)
+ }
 
 }
 </script>
 
 <style scoped>
 .btn{
-  background-color: black;
+  background-color: #57068c;
   color:white;
 }
 .navbar{
   height:100px
 }
 .button{
-  background-color: black;
+  background-color: #57068c;
   color:white;
 }
 .navbar-brand{

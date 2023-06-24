@@ -4,6 +4,13 @@
 
 <script>
 export default {
+  data(){
+    return {
+      username:'',
+      user:'',
+      email2:''
+    }
+  },
 
 }
 </script>
