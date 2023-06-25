@@ -1,6 +1,6 @@
 <template>
  <div>
- <the-header :user="this.userForPassing"></the-header>
+ <the-header  ></the-header>
  <center>
  <div class="container is-fluid">
 
@@ -34,7 +34,7 @@
 
 <div class="field is-grouped">
   <div class="control">
-    <button class="button">Submit</button>
+    <button  class="button">Submit</button>
   </div>
   <div class="control">
     <button class="button">Cancel</button>
@@ -65,6 +65,7 @@ import {
      const usersCollectionRef= collection(db,'users')
 
 export default {
+  emits:['changeUser'],
 components:{
     TheHeader
 },
@@ -82,6 +83,7 @@ data(){
    }
 },
 methods:{
+
    login()
 {
    signInWithEmailAndPassword(auth, this.email, this.password)
@@ -90,10 +92,11 @@ methods:{
   querySnapshot.forEach((doc) => {
             if(this.email == doc.data().email){
                    this.username = doc.data().username
-                   
+
 
             }
             this.usernameForPassing = this.username
+               this.$emit('changeUser')
     console.log(this.username)
     this.$router.push('/chat')
   });

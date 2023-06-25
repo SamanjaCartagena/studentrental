@@ -80,7 +80,6 @@
         Chatroom
       </a>
     </div>
-   <p v-if="user">Welcome {{user}}</p>
 
     <div class="navbar-end">
       <div class="navbar-item">
@@ -119,14 +118,17 @@ import {  signOut, } from "firebase/auth";
 
 
 export default {
-  props:['user'],
   data(){
     return{
+      user:''
     }
   },
   methods:{
     logging(){
      this.$router.push('Login')
+    },
+    changeUser(u){
+     this.user=u
     },
     signup(){
      this.$router.push('Signup')

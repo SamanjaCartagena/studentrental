@@ -1,6 +1,8 @@
 <template>
  <div>
-  <the-header ></the-header>
+
+  <the-header v-on:changeUser="updateUser($event)"></the-header>
+  <p style="font-size:30px; ">{{user}}</p>
   <first-part></first-part>
   
   <second-part></second-part>
@@ -17,7 +19,6 @@ export default {
     data(){
      return{
         user:'',
-        userForPassing:'',
 
      }
     },
@@ -25,6 +26,12 @@ export default {
         TheHeader, FirstPart,
         SecondPart
     },
+    methods:{
+      updateUser(u){
+      console.log("Value emitted"+u)
+     this.user=u
+    }
+    }
 
 
 }
