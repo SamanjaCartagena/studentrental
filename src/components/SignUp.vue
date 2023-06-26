@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import TheHeader from '../views/TheHeader.vue'
+import TheHeader from './TheHeader.vue'
 
 import {  createUserWithEmailAndPassword } from "firebase/auth";
 import {auth, db} from '../firebase/index'

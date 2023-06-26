@@ -1,6 +1,6 @@
 <template>
  <div>
- <the-header  ></the-header>
+ <the-header :usernameForPassing="this.usernameForPassing"></the-header>
  <center>
  <div class="container is-fluid">
 
@@ -48,10 +48,10 @@
 </template>
 
 <script>
-import TheHeader from '../views/TheHeader.vue'
+import TheHeader from './TheHeader.vue'
 import {auth} from '../firebase/index'
 import {  signInWithEmailAndPassword } from "firebase/auth";
-import {db} from '../firebase/index'
+import {db, usersCollectionRef} from '../firebase/index'
 
 import {
    doc,collection,
@@ -62,10 +62,8 @@ import {
   deleteDoc, where
    }
    from 'firebase/firestore'
-     const usersCollectionRef= collection(db,'users')
 
 export default {
-  emits:['changeUser'],
 components:{
     TheHeader
 },
@@ -95,9 +93,8 @@ methods:{
 
 
             }
-            this.usernameForPassing = this.username
-               this.$emit('changeUser')
-    console.log(this.username)
+            this.usernameForPassing=this.username
+            console.log('The username for passing in main page is '+this.usernameForPassing)
     this.$router.push('/chat')
   });
   })

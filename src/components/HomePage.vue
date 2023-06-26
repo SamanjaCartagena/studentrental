@@ -1,7 +1,7 @@
 <template>
  <div>
 
-  <the-header v-on:changeUser="updateUser($event)"></the-header>
+  <the-header ></the-header>
   <p style="font-size:30px; ">{{user}}</p>
   <first-part></first-part>
   
@@ -11,9 +11,19 @@
 
 <script>
 import FirstPart from '../views/FirstPart.vue'
-import TheHeader from '../views/TheHeader.vue'
+import TheHeader from './TheHeader.vue'
 import SecondPart from '../views/SecondPart.vue'
+import {db} from '../firebase/index'
 
+import {
+   doc,collection,
+  query,orderBy, 
+  limit, getDoc, 
+  onSnapshot, QuerySnapshot,
+  updateDoc, addDoc, 
+  deleteDoc, where
+   }
+   from 'firebase/firestore'
 
 export default {
     data(){
@@ -31,6 +41,10 @@ export default {
       console.log("Value emitted"+u)
      this.user=u
     }
+    },
+    mounted(){
+           const usersCollectionRef= collection(db,'users')
+
     }
 
 

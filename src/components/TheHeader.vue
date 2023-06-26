@@ -80,7 +80,7 @@
         Chatroom
       </a>
     </div>
-
+     {{userNameForPassing}}
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
@@ -120,6 +120,7 @@ import {  signOut, } from "firebase/auth";
 export default {
   data(){
     return{
+      props:['usernameForPassing'],
       user:''
     }
   },
@@ -146,6 +147,7 @@ export default {
     }
   },
  mounted(){
+  console.log('username for passing have been passed '+this.usernameForPassing)
  }
 
 }

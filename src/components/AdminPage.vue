@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import TheHeader from '../views/TheHeader.vue'
+import TheHeader from './TheHeader.vue'
 
 export default {
   components:{
