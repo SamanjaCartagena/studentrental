@@ -3,7 +3,7 @@ import HomePage from '../components/HomePage.vue';
 import Login from '../components/LoginPage.vue'
 import Signup from '../components/SignUp.vue'
 import Chatroom from '../components/Chatroom.vue'
-
+import ArtsNYU from '../components/ArtsNYU.vue'
 const router=createRouter({
     history: createWebHistory(),
     routes:[{
@@ -25,6 +25,11 @@ const router=createRouter({
         path: '/chat',
         
         component:Chatroom, 
+    },
+         {
+        path: '/artnyu',
+        
+        component:ArtsNYU, 
     },
 ]
 

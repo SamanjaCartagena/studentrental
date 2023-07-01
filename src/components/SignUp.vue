@@ -51,7 +51,7 @@
 import TheHeader from './TheHeader.vue'
 
 import {  createUserWithEmailAndPassword } from "firebase/auth";
-import {auth, db} from '../firebase/index'
+import {auth, db, usersCollectionRef} from '../firebase/index'
 import {
   doc,collection,
   query,orderBy, 
@@ -81,7 +81,6 @@ methods:{
       }
       else {
          
-const usersCollectionRef= collection(db,'users')
 
   addDoc(usersCollectionRef,{
    username:this.username,

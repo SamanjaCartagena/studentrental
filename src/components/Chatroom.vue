@@ -3,15 +3,18 @@
     <the-header></the-header>
     <center>
   <div class="container is-fluid">
-    {{username}}
+   
    <marquee behavior="alternate" style="color:white; background-color:black;  font-size:30px;">Find a roommate !</marquee>
-  <div style="width:90%; height:600px; border:2px solid black;">
+  <div style="width:90%; height:600px; border:2px solid black;  overflow: auto;
+  display: flex; flex-direction: column-reverse;" id="box">
    <ul>
-    <li style="width:100%; height:30px; color:white" v-for="chat in chatroom" :key="chat.id">
-         {{chat.user}}:{{chat.chat}}
+    <li style="width:100%; height:30px; color:white;" id="list" v-for="todo in todos" :key="todo.username" >
+         {{todo.username}} : {{todo.chats}} 
         </li>
    </ul>
   </div>
+     <br/>
+     <br/>
 <form @submit.prevent="addchat">
 <input   v-model="chatlatest" class="input is-large" type="text" placeholder="Type Message here.." >
 </form>
@@ -54,37 +57,27 @@ export default {
             alert('Hey')
         },
         addchat(){
-          this.chat=this.chatlatest
-            onAuthStateChanged(auth, async (user)=>{
-    if(user){
-        //do your logged in user crap here
-        console.log("The name is "+user.uid)
-        console.log("Logged in ", user.email)
-            onSnapshot(usersCollectionRef,(querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            if(user.email == doc.data().email){
-               
-              addDoc(usersCollectionRef,{
-                username:this.username,
-               chats:this.chat
-              })
-                console.log("same user")
-            }
+   addDoc(usersCollectionRef,{
+   username:this.username,
+   chats:this.chatlatest,
+     date:Date.now()
 
-  });
+    })
 
-  })
-    }else{
-        console.log("Logged out");
-    }
-})
+    this.chatlatest=''
 
-     this.chatlatest=''
+    var element = document.getElementById("list");
+    element.scrollTop = element.scrollHeight;
+
+
+        }
+
         }
      
        
-    },mounted(){
-     onAuthStateChanged(auth, async (user)=>{
+    ,mounted(){
+
+      onAuthStateChanged(auth, async (user)=>{
     if(user){
         //do your logged in user crap here
         this.usernameIs=true;
@@ -105,16 +98,29 @@ export default {
         console.log("Logged out");
     }
 })
-
-}
+onSnapshot(todosCollectionQuery,(querySnapshot) => {
+  const fbTodos =[];
+  querySnapshot.forEach((doc) => {
+    const todo ={
+      username:doc.data().username,
+      chats:doc.data().chats,
     }
+    fbTodos.push(todo)
+  });
+  this.todos=fbTodos
+})
+
+
+ }
+}
+    
 
 
 </script>
 
 <style>
-textarea{
-    overflow-y: scroll;
-}
 
+#list{
+  overflow: auto;
+}
 </style>

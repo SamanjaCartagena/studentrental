@@ -33,7 +33,7 @@ const app=initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getFirestore(app)
 const auth = getAuth(app);
-     const usersCollectionRef= collection(db,'users')
+     const usersCollectionRef= collection(db,'newusers')
 
 export {
      db,auth, app, usersCollectionRef

@@ -2,10 +2,10 @@
   <div>
    <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io" >
+    <router-link to="/">
       
       <h1 style="font-size:30px;">Student Rentals NYC</h1>
-    </a>
+    </router-link>
      <p v-if="usernameIs">Welcome {{username}}</p>
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
@@ -16,9 +16,7 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item">
-        Home
-      </a>
+      
 
        <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
@@ -26,9 +24,9 @@
         </a>
 
         <div class="navbar-dropdown">
-          <a class="navbar-item">
+          <router-link to="/artnyu" class="navbar-item">
             College of Arts and Science
-          </a>
+          </router-link>
           <a class="navbar-item">
             College of Dentistry
           </a>
@@ -86,13 +84,13 @@
           <button @click="signup"  style="background-color:#57068c; color:white; margin:5px; padding:10px; border:0px solid white; border-radius:0.4">
               Sign up
           </button>
-          
-           <button @click="logging" style="background-color:#57068c; color:white; margin:5px; padding:10px; border:0px solid white; border-radius:0.4">
-             Log in 
-          </button>
-           <button @click="logout" style="background-color:#57068c; color:white; margin:5px; padding:10px; border:0px solid white; border-radius:0.4">
+           <button v-if="usernameIs" @click="logout" style="background-color:#57068c; color:white; margin:5px; padding:10px; border:0px solid white; border-radius:0.4">
              Log Out 
           </button>
+           <button v-else @click="logging" style="background-color:#57068c; color:white; margin:5px; padding:10px; border:0px solid white; border-radius:0.4">
+             Log in 
+          </button>
+           
         </div>
       </div>
     </div>
