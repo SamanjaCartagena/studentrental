@@ -32,6 +32,7 @@ import {
   deleteDoc
    }
    from 'firebase/firestore'
+import { onAuthStateChanged } from 'firebase/auth';
 
 const todosCollectionQuery= query(usersCollectionRef, orderBy("date",'asc'))
 
@@ -41,7 +42,7 @@ export default {
         chatlatest:'',
        todos:'',
         username:'', 
-        chat:'',
+        chat:[],
         chatroom:''
      }
     },
@@ -53,41 +54,56 @@ export default {
             alert('Hey')
         },
         addchat(){
-          addDoc(usersCollectionRef,{
-            username:this.username,
-             chats:this.chatlatest,
-             
-             date:Date.now()
+          this.chat=this.chatlatest
+            onAuthStateChanged(auth, async (user)=>{
+    if(user){
+        //do your logged in user crap here
+        console.log("The name is "+user.uid)
+        console.log("Logged in ", user.email)
+            onSnapshot(usersCollectionRef,(querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            if(user.email == doc.data().email){
+               
+              addDoc(usersCollectionRef,{
+                username:this.username,
+               chats:this.chat
+              })
+                console.log("same user")
+            }
 
-    })
-    this.chatlatest=''
-    this.username=''
-        },
+  });
+
+  })
+    }else{
+        console.log("Logged out");
+    }
+})
+
+     this.chatlatest=''
+        }
+     
        
     },mounted(){
-   onSnapshot(usersCollectionRef,(querySnapshot) => {
+     onAuthStateChanged(auth, async (user)=>{
+    if(user){
+        //do your logged in user crap here
+        this.usernameIs=true;
+       
+        console.log("The name is "+user.uid)
+        console.log("Logged in ", user.email)
+            onSnapshot(usersCollectionRef,(querySnapshot) => {
   querySnapshot.forEach((doc) => {
+            if(user.email == doc.data().email){
                    this.username = doc.data().username
 
 
-            
+            }
+            console.log('The username for passing in main page is '+this.username)
   });
   })
-onSnapshot(todosCollectionQuery,(querySnapshot) => {
-  const fbTodos =[];
-  querySnapshot.forEach((doc) => {
-    this.chatroom ={
-      id:doc.id,
-      user:doc.data().username,
-      chat:doc.data().chats
+    }else{
+        console.log("Logged out");
     }
-
-    console.log(this.user)
-    console.log(this.chat)
-    fbTodos.push(this.chatroom)
-  });
-  this.chatroom=fbTodos
-  console.log(this.chatroom.user)
 })
 
 }

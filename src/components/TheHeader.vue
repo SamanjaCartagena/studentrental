@@ -3,12 +3,10 @@
    <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="https://bulma.io" >
-      <!-- <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-
-      !-->
+      
       <h1 style="font-size:30px;">Student Rentals NYC</h1>
     </a>
-
+     <p v-if="usernameIs">Welcome {{username}}</p>
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
@@ -115,13 +113,17 @@ import {
    from 'firebase/firestore'
    import {auth} from '../firebase/index'
 import {  signOut, } from "firebase/auth";
+import { onAuthStateChanged } from 'firebase/auth';
+import { db,usersCollectionRef} from '../firebase/index'
 
 
 export default {
   data(){
     return{
       props:['usernameForPassing'],
-      user:''
+      user:'',
+      username:'',
+      usernameIs:false
     }
   },
   methods:{
@@ -141,13 +143,34 @@ export default {
     signOut(auth).then(() => {
    this.$router.push('/')
    console.log('You have logged out')
+   this.usernameIs=false
   }).catch((error) => {
 
 });
     }
   },
  mounted(){
-  console.log('username for passing have been passed '+this.usernameForPassing)
+  onAuthStateChanged(auth, async (user)=>{
+    if(user){
+        //do your logged in user crap here
+        this.usernameIs=true;
+       
+        console.log("The name is "+user.uid)
+        console.log("Logged in ", user.email)
+            onSnapshot(usersCollectionRef,(querySnapshot) => {
+  querySnapshot.forEach((doc) => {
+            if(user.email == doc.data().email){
+                   this.username = doc.data().username
+
+
+            }
+            console.log('The username for passing in main page is '+this.username)
+  });
+  })
+    }else{
+        console.log("Logged out");
+    }
+})
  }
 
 }
